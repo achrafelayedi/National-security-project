@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="panel-group accordion-custom accordion-teal" id="accordion" style="margin-bottom: 0px;">
+            <div class="panel panel-default">
+                <a id="dessinerCheminGestionCortege" class="btn btn-outline-info waves-effect" href="#" style="margin-bottom: 3%;">
+                    <i class="clip-plus-circle"></i> Dessiner le trajet
+                </a>
+
+                <br>
+                <div class="md-form" style="width: 40%;margin: auto;">
+                    <input type="number" id="buffer" min="0" value="20" class="form-control">
+                    <label for="buffer" class="active">Buffer (m)</label>
+                </div>
+                <br>
+
+                <div class="md-form" style="width: 60%;margin: auto;">
+                    <input type="number" id="nbrAgentsBouchon" min="0" value="1" class="form-control">
+                    <label for="nbrAgentsBouchon" class="active">Nombre d'agents à mettre pour chaque bouchon</label>
+                </div>
+
+                <br>
+
+                <div class="md-form" style="width: 60%;margin: auto;">
+                    <input type="number" id="nbrAgentsPoi" min="0" value="1" class="form-control">
+                    <label for="nbrAgentsPoi" class="active">Nombre d'agents à mettre pour chaque poi</label>
+                </div>
+
+                <br>
+                <button type="reset" id="reinitGestionCortege" class="btn btn-blue-grey">Réinitialiser</button>
+                <button type="button" id="appliquerGestionCortege" class="btn btn-light-green">Appliquer</button>
+            </div>
+        </div>
+    </div>
+</div>

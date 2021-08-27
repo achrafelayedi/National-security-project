@@ -1,0 +1,23 @@
+#fichierExcel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    font-size: 23px;
+    padding-bottom: 12px;
+    direction: ltr;
+    cursor: pointer;
+}
+
+#wrapperelem {
+    overflow: hidden;
+}
+#firstelem {
+    width: 47%;
+    float:left;
+}
+#secondelem {
+    width: 53%;
+    overflow: hidden;
+}

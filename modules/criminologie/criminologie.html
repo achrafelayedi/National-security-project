@@ -1,0 +1,270 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="panel-group accordion-custom accordion-teal" id="accordion" style="margin-bottom: 0px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Importation
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="col-lg-11">
+                            <span class="btn btn-success fileinput-button">
+                                <i class="fas fa-file-excel" style="margin-right: 6px;"></i>
+                                <span>Ajouter un fichier Excel</span>
+                                <input id="fichierExcel" type="file" name="fichierExcel">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Ajout
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <form id="ajoutCrime">
+                        <div class="panel-body">
+                            <a id="pointerCrimeAjouter" class="btn btn-outline-danger waves-effect" href="#" style="margin-bottom: 3%;">
+                                <i class="clip-plus-circle"></i> Localisez l'emplacement du crime
+                            </a>
+                            <div id="wrapperelem">
+                                <div class="md-form">
+                                    <label>Type</label>
+                                </div>
+                                <br>
+                                <select id="type">
+                                    <option value=0 selected>Violence familiale</option>
+                                    <option value=1>Agression sexuelle</option>
+                                    <option value=2>Harcèlement criminel</option>
+                                    <option value=3>Violence et menaces physiques</option>
+                                    <option value=4>Vol et autres crimes contre les biens</option>
+                                    <option value=5>Autres</option>
+
+                                </select>
+                            </div>
+
+
+                            <div id="wrapperelem">
+                                <div id="firstelem">
+                                    <div class="md-form">
+                                        <input id="heure" type="text" class="form-control">
+                                        <label for="heure">Heure</label>
+                                    </div>
+                                </div>
+                                <div id="secondelem">
+                                    <div class="md-form mt-0 col-md-offset-1">
+                                        <input id="date" type="text" class="form-control">
+                                        <label for="date">Date</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="md-form">
+                                <label>Gravité</label>
+                            </div>
+                            <div id="wrapperelem">
+                                <div id="firstelem">
+                                    <br>
+                                    <select id="gravite">
+                                        <option value="false" selected>Moins grave</option>
+                                        <option value="null">Grave</option>
+                                        <option value="true">Plus grave</option>
+                                    </select>
+                                </div>
+                                <div id="secondelem">
+                                    <div class="md-form mt-0 col-md-offset-1">
+                                        <textarea type="text" id="description" class="md-textarea form-control" rows="2"></textarea>
+                                        <label for="description">Description</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="reset" id="reinitAjoutCrime" class="btn btn-blue-grey">Réinitialiser</button>
+                            <button type="button" id="ajouterCrimeBouton" class="btn btn-light-green">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Modification
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <form id="modifierCrime">
+                        <div class="panel-body">
+                            <a id="pointerCrimeModifier" class="btn btn-outline-danger waves-effect" href="#" style="margin-bottom: 3%;">
+                                <i class="clip-plus-circle"></i> Pointer sur l'emplacement du crime
+                            </a>
+                            <a id="pointerCrimeModifierNouvEmplace" class="btn btn-outline-primary waves-effect" href="#"
+                                style="margin-bottom: 3%;display: none;">
+                                <i class="clip-plus-circle"></i> Localiser le nouveau emplacement du crime
+                            </a>
+                            <div id="wrapperelem">
+                                <div class="md-form">
+                                    <label>Type</label>
+                                </div>
+                                <br>
+                                <select id="type">
+                                    <option value=0 selected>Violence familiale</option>
+                                    <option value=1>Agression sexuelle</option>
+                                    <option value=2>Harcèlement criminel</option>
+                                    <option value=3>Violence et menaces physiques</option>
+                                    <option value=4>Vol et autres crimes contre les biens</option>
+                                    <option value=5>Autres</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div id="wrapperelem">
+                                <div id="firstelem">
+                                    <div class="md-form">
+                                        <input id="heurem" type="text" class="form-control" required
+                                            data-required-message="E-Mail or Username is Required!">
+                                        <label for="heurem">Heure</label>
+                                    </div>
+                                </div>
+                                <div id="secondelem">
+                                    <div class="md-form mt-0 col-md-offset-1">
+                                        <input id="datem" type="text" class="form-control">
+                                        <label for="datem">Date</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="md-form">
+                                <label>Gravité</label>
+                            </div>
+                            <div id="wrapperelem">
+                                <div id="firstelem">
+                                    <br>
+                                    <select id="gravite">
+                                        <option value="false" selected>Moins grave</option>
+                                        <option value="null">Grave</option>
+                                        <option value="true">Plus grave</option>
+                                    </select>
+                                </div>
+                                <div id="secondelem">
+                                    <div class="md-form mt-0 col-md-offset-1">
+                                        <textarea type="text" id="description" class="md-textarea form-control" rows="2"></textarea>
+                                        <label for="description">Description</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="reset" id="reinitModifCrime" class="btn btn-blue-grey">Réinitialiser</button>
+                            <button type="button" id="modifierCrimeBouton" class="btn btn-light-green" disabled>Modifier</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Suppression
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <form id="supprimerCrime">
+                        <div class="panel-body">
+                            <a id="pointerCrimeSupprimer" class="btn btn-outline-danger waves-effect" href="#" style="margin-bottom: 3%;">
+                                <i class="clip-plus-circle"></i> Pointer sur l'emplacement du crime
+                            </a>
+                            <br>
+                            <button type="reset" id="reinitSuppCrime" class="btn btn-blue-grey">Réinitialiser</button>
+                            <button type="button" id="supprimerCrimeBouton" class="btn btn-light-green" disabled>Supprimer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Historique
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <button type="button" id="historiqueCrimeBouton" class="btn btn-primary" data-toggle="modal"
+                            data-target="#basicExampleModal">Afficher l'historique des crimes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Statistiques
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <button type="button" id="statistiquesCrimeBouton" class="btn btn-primary" data-toggle="modal"
+                            data-target="#basicExampleModal3">Afficher les statistiques des crimes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Thématiques
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseSeven" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <button type="button" id="heatMapCrimes" class="btn btn-primary">Heat map de la densité des crimes</button>
+                    </div>
+                    <button type="reset" id="viderCarte" class="btn btn-blue-grey">vider la carte</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    // DESACTIVATION DU CACHE DES FORMULAIRES
+    $("form :input").attr("autocomplete", "off");
+    // /DESACTIVATION DU CACHE DES FORMULAIRES
+
+    // PERSONNALISATION DES CHAMPS DATE ET HEURE
+    $("#ajoutCrime #date").datepicker({
+        maxDate: 0
+    });
+    $("#ajoutCrime #heure").timepicker({
+        currentText: "Maintenant",
+        closeText: "Ok",
+        timeInput: true,
+        timeText: "",
+        hourText: "Heure",
+        minuteText: "Minute",
+        timeOnlyTitle: "Choisissez l'heure"
+    });
+
+    $("#modifierCrime #datem").datepicker({
+        maxDate: 0
+    });
+    $("#modifierCrime #heurem").timepicker({
+        currentText: "Maintenant",
+        closeText: "Ok",
+        timeInput: true,
+        timeText: "",
+        hourText: "Heure",
+        minuteText: "Minute",
+        timeOnlyTitle: "Choisissez l'heure"
+    });
+        // /PERSONNALISATION DES CHAMPS DATE ET HEURE
+</script>

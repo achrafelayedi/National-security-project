@@ -1,0 +1,5 @@
+/* étendre les marges de la carte */
+#map {
+    margin-left: -15px;
+    margin-right: -15px;
+}

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="fr" class="no-js">
+<!--<![endif]-->
+<head>
+		<title>TABLEAU DE BORD</title>
+
+		<!-- META -->
+		<meta charset="utf-8" />
+		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<!-- /META -->
+
+		<!-- FAVICON -->
+		<link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+		<!-- /FAVICON -->
+
+		<!-- CSS DE LA TEMPLATE -->
+		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/fonts/style.css">
+		<link rel="stylesheet" href="assets/css/main.css">
+		<link rel="stylesheet" href="assets/css/main-responsive.css">
+		<link rel="stylesheet" href="assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+		<link rel="stylesheet" href="assets/css/theme_light.css" type="text/css" id="skin_color">
+		<link rel="stylesheet" href="assets/css/print.css" type="text/css" media="print"/>
+		<link rel="stylesheet" href="assets/plugins/notify/notify-flat.css" />
+		<!--[if IE 7]>
+		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+		<!-- /CSS DE LA TEMPLATE -->
+		
+		<!-- CSS DU CONTEXT MENU -->
+		<link rel="stylesheet" href="assets/plugins/context-menu/ol-contextmenu.min.css">
+		<!-- /CSS DU CONTEXT MENU -->
+		
+		<!-- CSS MATERIAL DESIGN BOOTSTRAP -->
+		<link rel="stylesheet" href="assets/plugins/mdb/css/mdb.min.css">
+		<!-- /CSS MATERIAL DESIGN BOOTSTRAP -->
+		
+		<!-- CSS TIME-PICKER -->
+		<link rel="stylesheet" href="assets/plugins/jquery-ui-1.12.1/time-picker-fr/time-picker-fr.css">
+		<!-- /CSS TIME-PICKER -->
+		
+		<!-- CSS JQUERY-UI -->
+		<link rel="stylesheet" href="assets/plugins/jquery-ui-1.12.1/jquery-ui.min.css">
+		<!-- /CSS JQUERY-UI -->
+
+		<!-- CSS D'OPEN LAYERS -->
+		<link rel="stylesheet" href="assets/plugins/open-layers/css/ol.css">
+		<link rel="stylesheet" href="assets/css/ol-ext.css" />
+		<!-- /CSS D'OPEN LAYERS -->
+
+		<!-- MAP CSS -->
+		<link rel="stylesheet" href="assets/css/map-style.css">
+		<!-- /MAP CSS -->
+		
+		<!-- CSS DE LA TABLE DES DONNÉES ATTRIBUTAIRES -->
+		<link rel="stylesheet" href="assets/css/table-style.css">
+		<!-- /CSS DE LA TABLE DES DONNÉES ATTRIBUTAIRES -->
+		
+		<!-- CSS BOOTSTRAP-DATATABLE -->
+		<link rel="stylesheet" href="assets/plugins/data-tables/dataTables.bootstrap.min.css">
+		<!-- /CSS BOOTSTRAP-DATATABLE -->
+		
+		<!-- CSS FONT-AWESOME -->
+		<link href="assets/plugins/font-awesome/css/all.min.css" rel="stylesheet"> 
+		<!-- /CSS FONT-AWESOME -->
+		
+	</head>
+
+	<body class="footer-fixed">
+
+		<!-- HEADER -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+
+			<!-- HAUT CONTENEUR DE NAVIGATION -->
+			<div class="container">
+				<div class="navbar-header">
+
+					<!-- RESPONSIVE MENU TOGGLER -->
+					<button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+						<span class="clip-list-2"></span>
+					</button>
+					<!-- /RESPONSIVE MENU TOGGLER -->
+					
+					<!-- LOGO -->
+					<a class="navbar-brand" href="">
+						<img src="assets/img/logo.png">
+					</a>
+					<!-- /LOGO -->
+					<div><a href="" style="color:inherit;text-decoration: none;"><p style="text-shadow: -1px -1px 1px #aaa;width: 160px;padding-top: 5p;margin-bottom: 0px;margin-top: 6.5px;text-align: right;">La direction générale de la sûreté nationale</p></a></div>
+
+				</div>
+				
+				<div class="navbar-tools">
+					<!-- TOP NAVIGATION MENU -->
+					<ul class="nav navbar-right">
+
+						<!-- EXPORTATION DE LA CARTE -->
+						<li  class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/img/exportation.png">
+								<span class="badge"></span>
+							</a>
+							<ul class="dropdown-menu todo">
+								<li>
+									<span class="dropdown-menu-title">EXPORTATION DE LA CARTE</span>
+								</li>
+								<li>
+									<div class="card" style="padding: 10px;">
+										<div class="card-body">
+											<button type="button" id="exporterCartePNG" class="btn btn-primary" style="width: -webkit-fill-available;">Format PNG</button>
+											<hr>
+											<label>Les dimensions de la page</label>
+											<select id="format" style="width: 27%;">
+												<option value="a0">A0</option>
+												<option value="a1">A1</option>
+												<option value="a2">A2</option>
+												<option value="a3">A3</option>
+												<option value="a4" selected>A4</option>
+												<option value="a5">A5</option>
+											</select>
+											<br>
+											<label>La résolution</label>
+											<select id="resolution">
+												<option value="150">150 dpi</option>
+												<option value="300">300 dpi</option>
+											</select>
+											<button type="button" id="exporterCartePDF" class="btn btn-primary" style="width: -webkit-fill-available;">Format PDF</button>
+											<hr>
+											<button type="button" id="imprimerCarte" class="btn btn-primary" style="width: -webkit-fill-available;">Imprimer</button>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<!-- /EXPORTATION DE LA CARTE -->
+
+						<!-- CALCUL D'ITINÉRAIRE -->
+						<li id="itineraire" class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/img/itineraire.png">
+								<span id="" class="badge"></span>
+							</a>
+							<ul class="dropdown-menu todo">
+								<li>
+									<span id="" class="dropdown-menu-title">CALCUL D'ITINÉRAIRE</span>
+								</li>
+								<li>
+									<div id="direction_road_map_content">
+										<div class="card" style="padding: 10px;">
+											<div class="card-body">
+												<div class="md-form">
+													<input type="text" id="start_location_input" class="form-control" autocomplete="off">
+													<label for="start_location_input">Lieu de départ</label>
+													
+												</div>
+							
+												<div class="col-10" style="z-index: 999999999; display: none;" id="start_location_suggestion_list">
+													<div class="list-group" style="max-height: 115px; overflow-y: auto;">
+													</div>
+												</div>
+
+												<div class="md-form">
+													<input type="text" id="destination_input" class="form-control" autocomplete="off">
+													<label for="destination_input">Destination</label>
+													
+												</div>
+
+												<div class="col-10" style="z-index: 999999999; display: none;" id="destination_suggestion_list">
+													<div class="list-group" style="max-height: 115px; overflow-y: auto;">
+													</div>
+												</div>
+												<div class="col-12">
+													<div class="btn-group" role="group" aria-label="Third group">
+														<button type="button" class="btn btn-success btn-lg" id="direction_mode_driving">Court</button>	
+														<button type="button" class="btn btn-warning btn-lg" id="direction_mode_fast">Rapide</button>
+														<button type="button" class="btn btn-secondary btn-lg" id="direction_mode_walking">Pieton</button>
+													</div>
+												</div>
+												
+												<div class="tab-pane" id="road_map_tab" role="tabpanel" aria-labelledby="contact-tab1" style="overflow-y: scroll;margin-top: 14px;max-height: 200px;">
+												</div>
+
+												<div class="btn-group" style="margin-top: 20px;margin-left: 87px;">
+														<button type="button" class="btn btn-info btn-lg" id="direction_startover" title="Réinitialiser">
+														<i class="fas fa-redo-alt"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							
+							</ul>
+						</li>
+						<!-- /CALCUL D'ITINÉRAIRE -->
+
+						<li id="listeCoucheMosquees" class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/img/mosquee.png">
+								<span id="nbrMosquees" class="badge"></span>
+							</a>
+							<ul class="dropdown-menu todo">
+								<li>
+									<span id="nbrMosqueesTitre" class="dropdown-menu-title"></span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul id="ulMosquees">
+											
+										</ul>
+									</div>
+								</li>
+								
+							</ul>
+						</li>
+
+						<li id="listeCoucheEcoles" class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/img/ecole.png">
+								<span id="nbrEcoles" class="badge"></span>
+							</a>
+							<ul class="dropdown-menu todo">
+								<li>
+									<span id="nbrEcolesTitre" class="dropdown-menu-title"></span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul id="ulEcoles">
+											
+										</ul>
+									</div>
+								</li>
+								
+							</ul>
+						</li>
+
+						<li id="listeCoucheHotels" class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/img/hotel.png">
+								<span id="nbrHotels" class="badge"></span>
+							</a>
+							<ul class="dropdown-menu todo">
+								<li>
+									<span id="nbrHotelsTitre" class="dropdown-menu-title"></span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul id="ulHotels">
+											
+										</ul>
+									</div>
+								</li>
+								
+							</ul>
+						</li>
+
+
+						<li id="listeCoucheBanques" class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/img/banque.png">
+								<span id="nbrBanques" class="badge"></span>
+							</a>
+							<ul class="dropdown-menu todo">
+								<li>
+									<span id="nbrBanquesTitre" class="dropdown-menu-title"></span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul id="ulBanques">
+											
+										</ul>
+									</div>
+								</li>
+								
+							</ul>
+						</li>
+
+						<li id="listeCouchePharmacies" class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/img/pharmacie.png">
+								<span id="nbrPharmacies" class="badge"></span>
+							</a>
+							<ul class="dropdown-menu todo">
+								<li>
+									<span id="nbrPharmaciesTitre" class="dropdown-menu-title"></span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul id="ulPharmacies">
+											
+										</ul>
+									</div>
+								</li>
+								
+							</ul>
+						</li>
+
+						<li id="listeCoucheDispensaires" class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/img/dispensaire.png">
+								<span id="nbrDispensaires" class="badge"></span>
+							</a>
+							<ul class="dropdown-menu todo">
+								<li>
+									<span id="nbrDispensairesTitre" class="dropdown-menu-title"></span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul id="ulDispensaires">
+											
+										</ul>
+									</div>
+								</li>
+								
+							</ul>
+						</li>
+						<!-- end: USER DROPDOWN -->
+					</ul>
+					<!-- /TOP NAVIGATION MENU -->
+
+				</div>
+			</div>
+			<!-- /HAUT CONTENEUR DE NAVIGATION -->
+
+		</div>
+		<!-- /HEADER -->
+
+		<!-- CONTENEUR PRINCIPAL -->
+		<div class="main-container">
+			<div class="navbar-content">
+
+				<!-- SIDEBAR -->
+				<div class="main-navigation navbar-collapse collapse">
+					
+					<!-- BOUTON TOGGLER -->
+					<div class="navigation-toggler">
+						<i class="clip-chevron-left"></i>
+						<i class="clip-chevron-right"></i>
+					</div>
+					<!-- /BOUTON TOGGLER -->
+
+					<!-- MENU PRINCIPAL DE NAVIGATION -->
+					<ul class="main-navigation-menu">
+						<li class="active open">
+							<a href="#"><i class="fas fa-tachometer-alt"></i>
+								<span id="tableauBord" class="title">TABLEAU DE BORD</span><span class="selected"></span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#"><i class="fas fa-layer-group"></i>
+								<span id="couchesInteret" class="title">COUCHES D'INTÉRÊT</span><span class="selected"></span>
+							</a>
+						</li>
+
+						<li class="">
+							<a href="#"><i class="fas fa-user-shield"></i>
+								<span id="gestionAgents" class="title">GESTION DES AGENTS</span><span class="selected"></span>
+							</a>
+						</li>
+
+						<li class="">
+							<a href="#"><i class="fas fa-car-crash"></i>
+								<span id="accidentologie" class="title">ACCIDENTOLOGIE</span><span class="selected"></span>
+							</a>
+						</li>
+
+						<li class="">
+							<a href="#"><i class="fas fa-user-ninja"></i>
+								<span id="criminologie" class="title">CRIMINOLOGIE</span><span class="selected"></span>
+							</a>
+						</li>
+
+						<li class="">
+							<a href="#"><i class="fas fa-exclamation-triangle"></i>
+								<span id="activitesRisque" class="title">LES ACTIVITÉS À RISQUE</span><span class="selected"></span>
+							</a>
+						</li>
+
+						<li class="">
+							<a href="#"><i class="fas fa-route"></i>
+								<span id="suiviTempsReel" class="title">SUIVI EN TEMPS RÉEL</span><span class="selected"></span>
+							</a>
+						</li>
+
+						<li class="">
+							<a href="#"><i class="fas fa-shield-alt"></i>
+								<span id="gestionCortege" class="title">GESTION DU CORTÈGE</span><span class="selected"></span>
+							</a>
+						</li>
+
+					</ul>
+					<!-- /MENU PRINCIPAL DE NAVIGATION -->
+
+				</div>
+				<!-- /SIDEBAR -->
+
+			</div>
+
+			<div class="main-content">
+				
+				<div class="container">
+
+					<div class="row">
+						<div class="col-sm-12">
+
+							<!-- MENU DROIT -->
+							<div id="style_selector" class="hidden-xs">
+								<div id="style_selector_container" style="display:none">
+									<div id="titreMenuDroit" class="style-main-title"></div>
+								</div>
+								<div id="boutonToggle" class="style-toggle close"></div>
+							</div>
+							<!-- /MENU DROIT -->
+							
+							<!-- NAVBAR -->
+							<ol class="breadcrumb">
+								<li>
+									<i id="iconeTabBord" class="fas fa-tachometer-alt"></i>
+									<a href="">
+										TABLEAU DE BORD
+									</a>
+								</li>
+								<li id="tabBord" class="active">
+								</li>
+								<li class="search-box">
+									<div class="sidebar-search">
+										<div class="form-group">
+											<input type="text" id="champRecherche" placeholder="Commencez à chercher ...">
+											<button class="submit">
+												<i class="clip-search-3"></i>
+											</button>
+											<div id="listeAddr"></div>
+										</div>
+									</div>
+								</li>
+							</ol>
+							<!-- /NAVBAR -->
+
+						</div>
+					</div>
+					
+					<!-- SECTION MAP -->
+					<div id="map" style="visibility: hidden"></div>
+					<!-- /SECTION MAP -->
+
+					<!-- SECTION TABLEAU DE BORD -->
+					<div id="sectionTabBord"></div>
+					<!-- SECTION TABLEAU DE BORD -->
+					
+					<!-- TABLE DES DONNÉES ATTRIBUTAIRES -->
+					<div id="main_agent_list_content_toggle" style="z-index: 999999999999;">
+						<div id="main_agent_list_content">
+							<div style="max-height: 200px;min-height: 200px;overflow-y: scroll;overflow-x: hidden;">
+								<div class="card" style="padding-right: 7px;">
+									<button type="button" class="btn btn-outline-default waves-effect" style="display:none;margin-left:auto;margin-right:auto;" disabled>
+										<div id="titreTableAttributaire" class="h6-responsive">
+										</div>
+									</button>
+									<div class="card-body">
+										<table id="tableAttributaire" class="table table-striped table-bordered table-sm" cellspacing="0" style="width: 100%;">
+											<thead>
+												<tr></tr>
+											</thead>
+										</table>
+									</div>
+								</div>
+								<div id="chargement" style="text-align: center;display: none">
+								<img src="assets/img/loading.gif" alt="">
+								<h4>Chargement ...</h4>
+								</div>
+							</div>
+						</div>
+						<div class="agent-toggle close">
+							<i class="clip-chevron-up"></i>
+						</div>
+					</div>
+					<!-- /TABLE DES DONNÉES ATTRIBUTAIRES -->
+
+				</div>
+				
+			</div>
+	
+		</div>
+		<!-- /CONTENEUR PRINCIPAL -->
+
+		<!-- CONTENEUR D'HISTORIQUE -->
+		<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="historiqueTitre"></h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div id="wrapperelem" style="width: 630px;margin: auto;">
+							<div id="firstelem">
+								<div class="md-form">
+									<input id="dateDebH" type="text" class="form-control" autocomplete="off">
+									<label for="dateDebH">DateHeure début</label>
+								</div>
+							</div>
+							<div id="secondelem">
+								<div class="md-form mt-0 col-md-offset-1">
+									<input id="dateFinH" type="text" class="form-control" autocomplete="off">
+									<label for="dateFinH">DateHeure fin</label>
+								</div>
+							</div>
+						</div>
+						<table id="tableHistorique" class="table table-striped table-bordered table-sm" cellspacing="0" style="width: 100%;">
+							<thead>
+								<tr></tr>
+							</thead>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /CONTENEUR D'HISTORIQUE -->
+
+		<!-- CONTENEUR STATISTIQUES -->
+		<div class="modal fade" id="basicExampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="statistiquesTitre"></h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div id="wrapperelem" style="width: 630px;margin: auto;">
+								<div id="firstelem">
+									<div class="md-form">
+										<input id="dateDebS" type="text" class="form-control" autocomplete="off">
+										<label for="dateDebS">DateHeure début</label>
+									</div>
+								</div>
+								<div id="secondelem">
+									<div class="md-form mt-0 col-md-offset-1">
+										<input id="dateFinS" type="text" class="form-control" autocomplete="off">
+										<label for="dateFinS">DateHeure fin</label>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="width: 100%;">Nombre de victimes au cours du temps</button>
+							</div>
+							<div class="collapse multi-collapse collapse in" id="multiCollapseExample1" style="position: relative;left: 3.5px;">
+								<div class="card card-body">
+									<div id="chartZoomable"></div>
+								</div>
+							</div>
+
+							<table style="width:100%">
+								<tr>
+									<td>
+										<div>
+											<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample2"
+											 role="button" aria-expanded="false" aria-controls="multiCollapseExample2" style="width: 100%;">Pourcentage de Morts
+												et de Blessés au cours du temps</button>
+										</div>
+									</td>
+									<td>
+										<div>
+											<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample3"
+											 role="button" aria-expanded="false" aria-controls="multiCollapseExample3" style="width: 100%;">Pourcentage de la
+												gravité des accidents au cours du temps</button>
+										</div>
+							
+									</td>
+								</tr>
+							
+								<tr>
+									<td style="width: 50%">
+							
+										<div class="collapse multi-collapse collapse in" id="multiCollapseExample2" style="position: relative;left: 3.5px;">
+											<div class="card card-body">
+												<div id="piePourceBlesMorts"></div>
+											</div>
+										</div>
+									</td>
+									<td style="width: 50%">
+										<div class="collapse multi-collapse collapse in" id="multiCollapseExample3" style="position: relative;left: 3.5px;">
+											<div class="card card-body">
+												<div id="piePourceGravite"></div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+
+							<div>
+								<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample4"
+								 role="button" aria-expanded="false" aria-controls="multiCollapseExample4" style="width: 100%;">Nombre de Morts et de Blessés au cours
+									du temps</button>
+							</div>
+							<div class="collapse multi-collapse collapse in" id="multiCollapseExample4" style="position: relative;left: 3.5px;">
+								<div class="card card-body">
+									<div id="chartLigneBlesMorts"></div>
+								</div>
+							</div>
+
+							<table style="width:100%">
+								<tr>
+									<td>
+										<div>
+											<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample5"
+											 role="button" aria-expanded="false" aria-controls="multiCollapseExample5" style="width: 100%;">Pourcentage de la densité des accidents selon les tranches horaires</button>
+										</div>
+									</td>
+									<td>
+										<div>
+											<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample6"
+											 role="button" aria-expanded="false" aria-controls="multiCollapseExample6" style="width: 100%;">Pourcentage de la gravité des accidents selon les tranches horaires</button>
+										</div>
+							
+									</td>
+								</tr>
+							
+								<tr>
+									<td style="width: 50%">
+							
+										<div class="collapse multi-collapse collapse in" id="multiCollapseExample5" style="position: relative;left: 3.5px;">
+											<div class="card card-body">
+												<div id="piePourceTranchesH"></div>
+											</div>
+										</div>
+									</td>
+									<td style="width: 50%">
+										<div class="collapse multi-collapse collapse in" id="multiCollapseExample6" style="position: relative;left: 3.5px;">
+											<div class="card card-body">
+												<div id="chartBarGravTranchesH"></div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /CONTENEUR STATISTIQUES -->
+
+
+		<!-- CONTENEUR STATISTIQUES CRIMINOLOGIE -->
+		<div class="modal fade" id="basicExampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="statistiquesTitreCrime"></h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div id="wrapperelem" style="width: 630px;margin: auto;">
+							<div id="firstelem">
+								<div class="md-form">
+									<input id="dateDebSC" type="text" class="form-control" autocomplete="off">
+									<label for="dateDebSC">DateHeure début</label>
+								</div>
+							</div>
+							<div id="secondelem">
+								<div class="md-form mt-0 col-md-offset-1">
+									<input id="dateFinSC" type="text" class="form-control" autocomplete="off">
+									<label for="dateFinSC">DateHeure fin</label>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample1c" role="button" aria-expanded="false" aria-controls="multiCollapseExample1c" style="width: 100%;">Nombre de crimes au cours du temps</button>
+						</div>
+						<div class="collapse multi-collapse collapse in" id="multiCollapseExample1c" style="position: relative;left: 3.5px;">
+							<div class="card card-body">
+								<div id="chartZoomableCrime"></div>
+							</div>
+						</div>
+
+						<table style="width:100%">
+							<tr>
+								<td>
+									<div>
+										<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample2c"
+										 role="button" aria-expanded="false" aria-controls="multiCollapseExample2c" style="width: 100%;">Pourcentage des crimes au cours du temps</button>
+									</div>
+								</td>
+								<td>
+									<div>
+										<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample3c"
+										 role="button" aria-expanded="false" aria-controls="multiCollapseExample3c" style="width: 100%;">Pourcentage de la gravité des crimes au cours du temps</button>
+									</div>
+						
+								</td>
+							</tr>
+						
+							<tr>
+								<td style="width: 50%">
+						
+									<div class="collapse multi-collapse collapse in" id="multiCollapseExample2c" style="position: relative;left: 3.5px;">
+										<div class="card card-body">
+											<div id="piePourceCrime"></div>
+										</div>
+									</div>
+								</td>
+								<td style="width: 50%">
+									<div class="collapse multi-collapse collapse in" id="multiCollapseExample3c" style="position: relative;left: 3.5px;">
+										<div class="card card-body">
+											<div id="piePourceGraviteCrime"></div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+
+						<table style="width:100%">
+							<tr>
+								<td>
+									<div>
+										<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample5c"
+										 role="button" aria-expanded="false" aria-controls="multiCollapseExample5c" style="width: 100%;">Pourcentage de la densité des crimes selon les tranches horaires</button>
+									</div>
+								</td>
+								<td>
+									<div>
+										<button type="button" data-toggle="collapse" class="btn btn-outline-secondary waves-effect" href="#multiCollapseExample6c"
+										 role="button" aria-expanded="false" aria-controls="multiCollapseExample6c" style="width: 100%;">Pourcentage de la gravité des crimes selon les tranches horaires</button>
+									</div>
+						
+								</td>
+							</tr>
+						
+							<tr>
+								<td style="width: 50%">
+						
+									<div class="collapse multi-collapse collapse in" id="multiCollapseExample5c" style="position: relative;left: 3.5px;">
+										<div class="card card-body">
+											<div id="piePourceTranchesHCrime"></div>
+										</div>
+									</div>
+								</td>
+								<td style="width: 50%">
+									<div class="collapse multi-collapse collapse in" id="multiCollapseExample6c" style="position: relative;left: 3.5px;">
+										<div class="card card-body">
+											<div id="chartBarGravTranchesHCrime"></div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /CONTENEUR STATISTIQUES CRIMINOLOGIE -->
+
+
+		<!-- FOOTER -->
+		<div class="footer clearfix">
+			<div class="footer-inner">
+				2018 &copy; Navcities
+			</div>
+
+			<div class="footer-items">
+				<span class="go-top"><i class="clip-chevron-up"></i></span>
+			</div>
+
+		</div>
+		<!-- /FOOTER -->
+
+		<!--[if gte IE 9]><!-->
+		<script src="assets/plugins/jquery/jquery.min.js"></script>
+		<!--<![endif]-->
+
+		<!-- SCRIPTS DE LA TEMPLATE -->
+		<script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/plugins/blockUI/jquery.blockUI.js"></script>
+		<script src="assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+		<script src="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+		<script src="assets/plugins/less/less-1.5.0.min.js"></script>
+		<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+		<script src="assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/scrolling.js"></script>
+		<script src="assets/plugins/notify/notify.min.js"></script>
+		<!-- /SCRIPTS DE LA TEMPLATE -->
+
+		<!-- SCRIPT MDB CORE -->
+		<script src="assets/plugins/mdb/js/mdb.min.js"></script>
+		<!-- /SCRIPT MDB CORE -->
+		
+		<!-- SCRIPT JQUERY-UI -->
+		<script src="assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+		<!-- /SCRIPT JQUERY-UI -->
+
+		<!-- SCRIPT DATE-PICKER -->
+		<script src="assets/plugins/jquery-ui-1.12.1/date-picker-fr/date-picker-fr.js"></script>
+		<!-- /SCRIPT DATE-PICKER -->
+
+		<!-- SCRIPT TIME-PICKER -->
+		<script src="assets/plugins/jquery-ui-1.12.1/time-picker-fr/time-picker-fr.js"></script>
+		<!-- /SCRIPT TIME-PICKER -->
+		
+		<!-- SCRIPT DATATABLE-JQUERY -->
+		<script src="assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+		<!-- /SCRIPT DATATABLE-JQUERY -->
+
+		<!-- SCRIPT DATATABLE-BOOTSTRAP -->
+		<script src="assets/plugins/data-tables/dataTables.bootstrap.min.js"></script>
+		<!-- /SCRIPT DATATABLE-BOOTSTRAP -->
+		
+		<!-- SCRIPT DATATABLE-EXPORTATION -->
+		<script src="assets/plugins/data-tables/dataTables.buttons.min.js"></script>
+		<script src="assets/plugins/data-tables/jszip.min.js"></script>
+		<script src="assets/plugins/data-tables/pdfmake.min.js"></script>
+		<script src="assets/plugins/data-tables/vfs_fonts.js"></script>
+		<script src="assets/plugins/data-tables/buttons.html5.min.js"></script>
+		<script src="assets/plugins/data-tables/buttons.print.min.js"></script>
+		<!-- /SCRIPT DATATABLE-EXPORTATION -->
+
+		<!-- SCRIPT HIGHCHARTS -->
+		<script src="assets/plugins/highcharts/highcharts.js"></script>
+		<script src="assets/plugins/highcharts/data.js"></script>
+		<script src="assets/plugins/highcharts/series-label.js"></script>	
+		<script src="assets/plugins/highcharts/exporting.js"></script>
+		<script src="assets/plugins/highcharts/export-data.js"></script>
+		<!-- /SCRIPT HIGHCHARTS -->
+		
+		<!-- SCRIPT DE GESTION DES CHARTS -->
+		<script src="assets/js/charts.js"></script>
+		<!-- /SCRIPT DE GESTION DES CHARTS -->
+		
+		<!-- SCRIPT DE LA GESTION DES MODULES -->
+		<script src="assets/js/GestionDesModules.js"></script>
+		<!-- /SCRIPT DE LA GESTION DES MODULES -->
+
+		<!-- SCRIPT D'OPEN LAYERS -->
+		<script src="assets/plugins/open-layers/js/ol.js"></script>
+		<script src="assets/js/ol-ext.js"></script>
+		<!-- /SCRIPT D'OPEN LAYERS -->
+
+		<!-- SCRIPT DU CONTEXT MENU -->
+		<script src="assets/plugins/context-menu/ol-contextmenu.js"></script>
+		<!-- /SCRIPT DU CONTEXT MENU -->
+		
+		<!-- SCRIPT DU FILE-SAVER -->
+		<script src="assets/plugins/file-saver/FileSaver.min.js"></script>
+		<!-- /SCRIPT DU FILE-SAVER -->
+		
+		<!-- SCRIPT DU PRINT-THIS -->
+		<script src="assets/plugins/print-this/printThis.js"></script>
+		<!-- SCRIPT DU PRINT-THIS -->
+
+		<!-- SCRIPT DU JSPDF -->
+		<script src="assets/plugins/jspdf/jspdf.min.js"></script>
+		<!-- /SCRIPT DU JSPDF -->
+
+		<!-- SCRIPT DE LA CARTE ET LES COUCHES PRÉDÉFINIES -->
+		<script src="assets/js/map.js"></script>
+		<!-- /SCRIPT DE LA CARTE ET LES COUCHES PRÉDÉFINIES -->
+		
+		<!-- SCRIPT DE LA GESTION GRAPHIQUE DES MENUS -->
+		<script src="assets/js/gestionGraphiqueDesMenus.js"></script>
+		<!-- /SCRIPT DE LA GESTION GRAPHIQUE DES MENUS -->
+
+		<!-- SCRIPT DE CHAMP DE RECHERCHE -->
+		<script src="assets/js/barreRecherche.js"></script>
+		<!-- /SCRIPT DE CHAMP DE RECHERCHE -->
+
+		<!-- SCRIPT DE MENU CLIQUE DROIT -->
+		<script src="assets/js/menuCliqueDroit.js"></script>
+		<!-- /SCRIPT DE MENU CLIQUE DROIT -->
+
+		<!-- SCRIPT DE LA TABLE DES DONNÉES ATTRIBUTAIRES -->
+		<script src="assets/js/table.js"></script>
+		<!-- /SCRIPT DE LA TABLE DES DONNÉES ATTRIBUTAIRES -->
+
+		<!-- SCRIPT DE GESTION DES FICHIERS .XLSX ET XLS -->
+		<script src="assets/plugins/libsXlsxXls/xls/xls.core.min.js"></script>
+		<script src="assets/plugins/libsXlsxXls/xlsx/xlsx.core.min.js"></script>
+		<!-- /SCRIPT DE GESTION DES FICHIERS .XLSX ET XLS -->
+
+		<!-- SCRIPT DU TURF -->
+		<script src="assets/plugins/turf/turf.min.js"></script>
+		<!-- /SCRIPT DU TURF -->
+	</body>
+	
+</html>

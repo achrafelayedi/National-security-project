@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="panel-group accordion-custom accordion-teal" id="accordion" style="margin-bottom: 0px;">
+            <div class="panel panel-default">
+
+                <h3 class="h3-responsive"><strong>Veuillez sélectionner les deux agents</strong></h3>
+                <br>
+                        <label>Agent mobile en tête</label>
+                        <select class="custom-select mb-4" id="agent1"></select>
+                        <br>
+                        <label>Agent mobile en queue</label>
+                        <select class="custom-select mb-4" id="agent2"></select>
+                    
+                        <br><br>
+
+                        <div class="md-form" style="width: 70%;margin: auto;">
+                            <input type="number" id="denManif" min="0" value="1" class="form-control">
+                            <label for="denManif" class="active">Densité de manifestants (Nombre de manifestants / m²)</label>
+                        </div>
+
+                        <br>
+
+                        <div class="md-form" style="width: 50%;margin: auto;">
+                            <input type="number" id="tempsSync" min="0" value="1" class="form-control">
+                            <label for="tempsSync" class="active">Temps de synchronisation par seconde</label>
+                        </div>
+
+                        <br>
+                <button type="reset" id="reinitSuivre" class="btn btn-blue-grey">Réinitialiser</button>
+                <button type="button" id="suivre" class="btn btn-light-green">Suivre la marche de protestation</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function checkTheDropdowns(){
+  var arr  = $('select').find(':selected');
+  $('select').find('option').show();
+	$.each($('select'), function(){  
+	var self = this;
+	var selectVal = $(this).val();
+	$.each(arr, function(){  		
+			if (selectVal !== $(this).val()){
+					$(self).find('option[value="'+$(this).val()+'"]').hide()
+      } else {
+					$(self).find('option[value="'+$(this).val()+'"]').show()
+      }
+  });
+})
+};
+checkTheDropdowns();
+$(document).off('change', 'select').on('change', 'select', checkTheDropdowns);
+</script>
