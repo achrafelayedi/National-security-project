@@ -4,8 +4,7 @@ This project consists of developing a Geoenriched Web GIS Platform to enhance na
 
 # Demo
 
-[![Watch the video](https://user-images.githubusercontent.com/36647745/131191933-7e087ca2-d15b-4f54-807a-d19dde7dde34.png)](https://vimeo.com/manage/videos/593514206)
-
+[![Watch the video](https://user-images.githubusercontent.com/36647745/131191933-7e087ca2-d15b-4f54-807a-d19dde7dde34.png)](https://files.fm/u/pkayxy6hn#/view/t7nq4bcrb)
 # Features
 
 + Points of interest layers Module
